@@ -207,7 +207,7 @@ if __name__ == "__main__":
         q = slerp(np.array(q_s), np.array(q_e), tm, frame)
 	    
         # Korak koji se dodaje tackama vektora da bi se konstantno translirale ka krajnjim tackama a ne samo rotirale u koord. pocetku
-        korak = (frame % tm) * (p_e - p_s) / tm
+        korak = frame * (p_e - p_s) / tm
 	    
         for a, start, end in zip(axis, startpoints, endpoints):
             start = transform(np.array(start), np.array(q))
@@ -223,4 +223,4 @@ if __name__ == "__main__":
 
     anim = animation.FuncAnimation(fig, animate, frames=tm, init_func=init, interval=5, repeat=True, repeat_delay=20)
     anim.save('animation.gif')
-    plt.show()
+    #plt.show()
