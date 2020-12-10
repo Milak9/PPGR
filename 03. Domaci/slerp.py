@@ -67,7 +67,7 @@ def AxisAngle(A):
         if not np.any(u):
             u = third
             
-    u = normalizacija(first)
+    u = normalizacija(u)
     
     u_p = A.dot(u)
     u_p = normalizacija(u_p)
@@ -140,7 +140,7 @@ if __name__ == "__main__":
     p_s = np.array([7, 5, 6])
 
     # Rotacija
-    A_s = Euler2A(math.pi / 3, math.pi / 2, -math.pi / 4)
+    A_s = Euler2A(math.pi / 6, 0, 0)
     # Pocetni kvaternion
     u, angle = AxisAngle(A_s)
     q_s = AxisAngle2Q(u, angle)
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     p_e = np.array([2, 1, 4])
 
     # Rotacija
-    A_e = Euler2A(-math.pi / 3, math.pi / 6, -math.pi / 9)
+    A_e = Euler2A(-math.pi / 3, 0, -math.pi / 9)
     # Krajnji kvaternion
     u, angle = AxisAngle(A_e)
     q_e = AxisAngle2Q(u, angle) 
@@ -222,5 +222,5 @@ if __name__ == "__main__":
         return axis
 
     anim = animation.FuncAnimation(fig, animate, frames=tm, init_func=init, interval=5, repeat=True, repeat_delay=20)
-    anim.save('animation.gif')
-    #plt.show()
+    #anim.save('animation.gif')
+    plt.show()
