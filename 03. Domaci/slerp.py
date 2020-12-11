@@ -36,8 +36,11 @@ def normalizacija(u):
     
     norma = math.sqrt(norma)
     
-    return u / norma
-
+    if norma != 0:
+        return u / norma
+    else:
+        return u
+        
 def AxisAngle(A):
     if round(LA.det(A)) != 1:
         print("Determinanta je razlicita od 1")
